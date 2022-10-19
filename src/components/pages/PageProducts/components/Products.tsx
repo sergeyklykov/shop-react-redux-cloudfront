@@ -17,7 +17,6 @@ export default function Products() {
 
   return (
     <Grid container spacing={4}>
-      {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {data.map(({ count, ...product }, index) => (
         <Grid item key={product.id} xs={12} sm={6} md={4}>
           <Card
@@ -35,7 +34,11 @@ export default function Products() {
               <Typography>{formatAsPrice(product.price)}</Typography>
             </CardContent>
             <CardActions>
-              <AddProductToCart product={product} />
+              {count > 0 ? (
+                <AddProductToCart product={product} />
+              ) : (
+                <Typography>Out of stock</Typography>
+              )}
             </CardActions>
           </Card>
         </Grid>
